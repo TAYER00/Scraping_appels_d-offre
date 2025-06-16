@@ -52,9 +52,11 @@ class MarchesPublicsScraper:
                     page.wait_for_selector(table_selector, timeout=5000)
                     rows = page.query_selector_all(f"{table_selector} tr")
                     if not rows:
-                        raise Exception("Tableau des résultats non trouvé ou vide")
+                        print("Tableau des résultats non trouvé ou vide")
+                        return []
                 except Exception as e:
-                    raise Exception(f"Erreur lors de l'extraction du tableau: {str(e)}")
+                    print(f"Erreur lors de l'extraction du tableau: {str(e)}")
+                    return []
                 
                 print(f"Nombre de lignes trouvées: {len(rows)-1}")
                 for row in rows[1:]:  # Skip header row
@@ -63,43 +65,30 @@ class MarchesPublicsScraper:
                     # Extract object
                     object_elem = row.query_selector('[id^="ctl0_CONTENU_PAGE_resultSearch_tableauResultSearch_"][id$="_panelBlocObjet"]')
                     if object_elem:
-                        tender['object'] = object_elem.inner_text().strip()
-                    
-                    # Extract publication date
-                    date_elem = row.query_selector('td:nth-child(2) > div:nth-child(4)')
-                    if date_elem:
-                        tender['publication_date'] = date_elem.inner_text().strip()
-                    
-                    # Extract execution location
-                    location_elem = row.query_selector('[id^="ctl0_CONTENU_PAGE_resultSearch_tableauResultSearch_"][id$="_panelBlocLieuxExec"]')
-                    if location_elem:
-                        tender['execution_location'] = location_elem.inner_text().strip()
+                        tender['objet'] = object_elem.inner_text().strip()
                     
                     # Extract deadline date
                     deadline_elem = row.query_selector('#ctl0_CONTENU_PAGE_resultSearch_detailCons_ctl1_ctl0_dateHeureLimiteRemisePlis')
                     if deadline_elem:
-                        tender['deadline_date'] = deadline_elem.inner_text().strip()
+                        tender['date_limite'] = deadline_elem.inner_text().strip()
                     else:
-                        tender['deadline_date'] = 'N/A'
+                        tender['date_limite'] = 'N/A'
                     
-                    if tender:
+                    if tender and 'objet' in tender:
                         tenders.append(tender)
                 
                 browser.close()
-                
-                if not tenders:
-                    raise Exception("Aucun appel d'offres n'a été trouvé")
                 
                 # Export data
                 print(f"Exportation de {len(tenders)} appels d'offres...")
                 self._export_data(tenders)
                 
                 print("Scraping terminé avec succès!")
-                return len(tenders)
+                return tenders
                 
         except Exception as e:
             print(f"\nERREUR lors du scraping: {str(e)}")
-            raise
+            return []
     
     def _export_data(self, tenders):
         try:
@@ -108,10 +97,8 @@ class MarchesPublicsScraper:
             txt_path = f'{self.data_dir}/data.txt'
             with open(txt_path, 'w', encoding='utf-8') as f:
                 for tender in tenders:
-                    f.write(f"Object: {tender.get('object', 'N/A')}\n")
-                    f.write(f"Publication Date: {tender.get('publication_date', 'N/A')}\n")
-                    f.write(f"Execution Location: {tender.get('execution_location', 'N/A')}\n")
-                    f.write(f"Date Limite: {tender.get('deadline_date', 'N/A')}\n")
+                    f.write(f"Objet: {tender.get('objet', 'N/A')}\n")
+                    f.write(f"Date Limite: {tender.get('date_limite', 'N/A')}\n")
                     f.write('---\n')
             print(f"Données exportées vers {txt_path}")
         
@@ -130,4 +117,4 @@ class MarchesPublicsScraper:
             print(f"Données exportées vers {excel_path}")
             
         except Exception as e:
-            raise Exception(f"Erreur lors de l'exportation des données: {str(e)}")
+            print(f"Erreur lors de l'exportation des données: {str(e)}")

@@ -58,20 +58,12 @@ class MarsaMarocScraper:
                     page.goto('https://achats.marsamaroc.co.ma/?page=entreprise.EntrepriseAdvancedSearch&AllCons&searchAnnCons')
                     print("Navigation directe vers la page des appels d'offres...")
                     
-                    # Capture d'écran après la navigation directe
-                    print("Capture d'écran de la page des appels d'offres...")
-                    page.screenshot(path=f"{self.data_dir}/post_navigation.png")
-                    
                     # Attendre que la page soit complètement chargée
                     print("Attente du chargement complet de la page...")
                     page.wait_for_load_state('networkidle')
                     page.wait_for_load_state('domcontentloaded')
                     page.wait_for_timeout(10000)  # Attente de 10 secondes après la navigation
                     
-                    # Capture d'écran et affichage de l'URL après la navigation
-                    print(f"URL actuelle: {page.url}")
-                    print("Capture d'écran de la page des appels d'offres...")
-                    page.screenshot(path=f"{self.data_dir}/post_navigation.png")
                 except Exception as e:
                     raise Exception(f"Erreur lors de la navigation: {str(e)}")
                 
@@ -85,10 +77,6 @@ class MarsaMarocScraper:
                     page.wait_for_selector('#tabNav', timeout=30000)
                     page.wait_for_selector('div.content', timeout=30000)
                     
-                    # Prendre une capture d'écran pour vérifier la structure de la page
-                    print("Capture d'écran de la page pour analyse...")
-                    page.screenshot(path=f"{self.data_dir}/page_before_extraction.png")
-                    
                     # Trouver tous les appels d'offre
                     print("Recherche des appels d'offre...")
                     tender_items = page.query_selector_all('#tabNav div.content > div')
@@ -98,9 +86,8 @@ class MarsaMarocScraper:
                         tender_items = page.query_selector_all('div.content div.row')
                     
                     if not tender_items:
-                        print("Aucun appel d'offre trouvé. Prise d'une capture d'écran...")
-                        page.screenshot(path=f"{self.data_dir}/page_content.png")
-                        raise Exception("Liste des appels d'offre non trouvée ou vide")
+                        print("Aucun appel d'offre trouvé.")
+                        return []
                     
                     print(f"Nombre d'appels d'offre trouvés: {len(tender_items)}")
                     
@@ -111,12 +98,12 @@ class MarsaMarocScraper:
                         print("Extraction de l'objet...")
                         object_elem = item.query_selector('div.p-objet, div.objet, .objet')
                         if object_elem:
-                            tender['object'] = object_elem.inner_text().strip()
-                            print(f"Objet trouvé: {tender['object'][:50]}...")
+                            tender['objet'] = object_elem.inner_text().strip()
+                            print(f"Objet trouvé: {tender['objet'][:50]}...")
                         else:
                             print("Objet non trouvé avec le sélecteur principal, tentative avec le texte complet...")
-                            tender['object'] = item.inner_text().strip()
-                            print(f"Texte complet extrait: {tender['object'][:50]}...")
+                            tender['objet'] = item.inner_text().strip()
+                            print(f"Texte complet extrait: {tender['objet'][:50]}...")
                         
                         # Extract deadline date
                         print("Extraction de la date limite...")
@@ -145,25 +132,20 @@ class MarsaMarocScraper:
                         
                 except Exception as e:
                     print(f"Erreur détaillée lors de l'extraction: {str(e)}")
-                    # Prendre une capture d'écran pour le débogage
-                    page.screenshot(path=f"{self.data_dir}/error_screenshot.png")
                     raise Exception(f"Erreur lors de l'extraction des appels d'offre: {str(e)}")
                 
                 browser.close()
-                
-                if not tenders:
-                    raise Exception("Aucun appel d'offres n'a été trouvé")
                 
                 # Export data
                 print(f"Exportation de {len(tenders)} appels d'offres...")
                 self._export_data(tenders)
                 
                 print("Scraping terminé avec succès!")
-                return len(tenders)
+                return tenders
                 
         except Exception as e:
             print(f"\nERREUR lors du scraping: {str(e)}")
-            raise
+            return []
     
     def _export_data(self, tenders):
         try:
@@ -172,7 +154,7 @@ class MarsaMarocScraper:
             txt_path = f'{self.data_dir}/data.txt'
             with open(txt_path, 'w', encoding='utf-8') as f:
                 for tender in tenders:
-                    f.write(f"Object: {tender.get('object', 'N/A')}\n")
+                    f.write(f"Object: {tender.get('objet', 'N/A')}\n")
                     f.write(f"Date Limite: {tender.get('date_limite', 'N/A')}\n")
                     f.write('---\n')
             print(f"Données exportées vers {txt_path}")
@@ -192,4 +174,4 @@ class MarsaMarocScraper:
             print(f"Données exportées vers {excel_path}")
             
         except Exception as e:
-            raise Exception(f"Erreur lors de l'exportation des données: {str(e)}")
+            print(f"Erreur lors de l'exportation des données: {str(e)}")

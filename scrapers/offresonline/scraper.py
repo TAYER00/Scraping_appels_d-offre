@@ -39,9 +39,6 @@ class OffresonlineScraper:
                 # Attendre 10 secondes après la connexion
                 page.wait_for_timeout(10000)
                 
-                # Prendre une capture d'écran après la connexion
-                page.screenshot(path=os.path.join(self.data_dir, 'post_login.png'))
-                
                 # Naviguer vers la page des appels d'offres
                 print("Navigation vers la page des appels d'offres...")
                 page.goto('https://offresonline.com/Admin/alert.aspx?i=a&url=5')
@@ -49,15 +46,9 @@ class OffresonlineScraper:
                 # Attendre 10 secondes après la navigation
                 page.wait_for_timeout(10000)
                 
-                # Prendre une capture d'écran après la navigation
-                page.screenshot(path=os.path.join(self.data_dir, 'post_navigation.png'))
-                
                 # Attendre que le tableau des appels d'offres soit visible
                 print("Attente du chargement du tableau des appels d'offres...")
                 page.wait_for_selector('#tableao')
-                
-                # Prendre une capture d'écran avant l'extraction
-                page.screenshot(path=os.path.join(self.data_dir, 'page_before_extraction.png'))
                 
                 # Extraire les données
                 print("Extraction des données...")
@@ -69,12 +60,12 @@ class OffresonlineScraper:
                         objet = row.query_selector('td.classltdleftalert, td.classltdleftalertnonvueNB')
                         date_limite = row.query_selector('td.classltdcenteralertNB > b:nth-child(1)')
                         
-                        tender = {
-                            'objet': objet.text_content().strip() if objet else 'N/A',
-                            'date_limite': date_limite.text_content().strip() if date_limite else 'N/A'
-                        }
-                        
-                        tenders.append(tender)
+                        if objet and objet.text_content().strip():
+                            tender = {
+                                'objet': objet.text_content().strip(),
+                                'date_limite': date_limite.text_content().strip() if date_limite else 'N/A'
+                            }
+                            tenders.append(tender)
                     except Exception as e:
                         print(f"Erreur lors de l'extraction d'une ligne : {str(e)}")
                         continue
@@ -99,12 +90,12 @@ class OffresonlineScraper:
                     print(f"Extraction terminée. {len(tenders)} appels d'offres extraits.")
                 else:
                     print("Aucun appel d'offres trouvé.")
+                
+                return tenders
                     
             except Exception as e:
                 print(f"Une erreur est survenue : {str(e)}")
-                # Prendre une capture d'écran en cas d'erreur
-                page.screenshot(path=os.path.join(self.data_dir, 'error.png'))
-                raise
+                return []
             
             finally:
                 browser.close()

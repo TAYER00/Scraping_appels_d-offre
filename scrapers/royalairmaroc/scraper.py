@@ -39,7 +39,6 @@ class RoyalAirMarocScraper:
                 
                 # Vérifier si la connexion a réussi
                 print("Vérification de la connexion...")
-                page.screenshot(path=f"{self.data_dir}/post_login.png")
                 
                 # Cliquer sur le lien vers la page des appels d'offres
                 print("Navigation vers la liste des appels d'offres...")
@@ -54,11 +53,9 @@ class RoyalAirMarocScraper:
                     page.wait_for_load_state('domcontentloaded')
                     page.wait_for_timeout(10000)  # Attente de 10 secondes après la navigation
                     
-                    # Capture d'écran après la navigation
-                    print("Capture d'écran de la page des appels d'offres...")
-                    page.screenshot(path=f"{self.data_dir}/post_navigation.png")
                 except Exception as e:
-                    raise Exception(f"Erreur lors de la navigation: {str(e)}")
+                    print(f"Erreur lors de la navigation: {str(e)}")
+                    return []
                 
                 # Extract data
                 print("Extraction des données...")
@@ -70,18 +67,13 @@ class RoyalAirMarocScraper:
                     table_selector = '#chooseRfqFEBean > div > section > div.table-root > table'
                     page.wait_for_selector(table_selector, timeout=30000)
                     
-                    # Prendre une capture d'écran pour vérifier la structure de la page
-                    print("Capture d'écran de la page pour analyse...")
-                    page.screenshot(path=f"{self.data_dir}/page_before_extraction.png")
-                    
                     # Extraire les données des appels d'offres
                     print("Extraction des appels d'offres...")
                     rows = page.query_selector_all('#chooseRfqFEBean > div > section > div.table-root > table > tbody.list-tbody.async-list-tbody > tr')
                     
                     if not rows:
-                        print("Aucun appel d'offre trouvé. Prise d'une capture d'écran...")
-                        page.screenshot(path=f"{self.data_dir}/page_content.png")
-                        raise Exception("Liste des appels d'offre non trouvée ou vide")
+                        print("Aucun appel d'offre trouvé.")
+                        return []
                     
                     print(f"Nombre d'appels d'offre trouvés: {len(rows)}")
                     
@@ -92,8 +84,8 @@ class RoyalAirMarocScraper:
                         print("Extraction de l'objet...")
                         object_elem = row.query_selector('td.col_TITLE.tdMedium')
                         if object_elem:
-                            tender['object'] = object_elem.inner_text().strip()
-                            print(f"Objet trouvé: {tender['object'][:50]}...")
+                            tender['objet'] = object_elem.inner_text().strip()
+                            print(f"Objet trouvé: {tender['objet'][:50]}...")
                         
                         # Extract deadline date
                         print("Extraction de la date limite...")
@@ -104,30 +96,26 @@ class RoyalAirMarocScraper:
                         else:
                             tender['date_limite'] = 'N/A'
                         
-                        if tender:
+                        if tender and 'objet' in tender:
                             tenders.append(tender)
                             print("Appel d'offre ajouté à la liste")
                         
                 except Exception as e:
                     print(f"Erreur détaillée lors de l'extraction: {str(e)}")
-                    page.screenshot(path=f"{self.data_dir}/error_screenshot.png")
-                    raise Exception(f"Erreur lors de l'extraction des appels d'offre: {str(e)}")
+                    return []
                 
                 browser.close()
-                
-                if not tenders:
-                    raise Exception("Aucun appel d'offres n'a été trouvé")
                 
                 # Export data
                 print(f"Exportation de {len(tenders)} appels d'offres...")
                 self._export_data(tenders)
                 
                 print("Scraping terminé avec succès!")
-                return len(tenders)
+                return tenders
                 
         except Exception as e:
             print(f"\nERREUR lors du scraping: {str(e)}")
-            raise
+            return []
     
     def _export_data(self, tenders):
         try:
@@ -136,7 +124,7 @@ class RoyalAirMarocScraper:
             txt_path = f'{self.data_dir}/data.txt'
             with open(txt_path, 'w', encoding='utf-8') as f:
                 for tender in tenders:
-                    f.write(f"Object: {tender.get('object', 'N/A')}\n")
+                    f.write(f"Objet: {tender.get('objet', 'N/A')}\n")
                     f.write(f"Date Limite: {tender.get('date_limite', 'N/A')}\n")
                     f.write('---\n')
             print(f"Données exportées vers {txt_path}")
@@ -157,4 +145,3 @@ class RoyalAirMarocScraper:
             
         except Exception as e:
             print(f"Erreur lors de l'exportation des données: {str(e)}")
-            raise

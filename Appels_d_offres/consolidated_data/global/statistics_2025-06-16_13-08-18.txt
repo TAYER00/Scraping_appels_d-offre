@@ -1,0 +1,8 @@
+=== Statistiques des appels d'offres ===
+
+Nombre total d'appels d'offres: 28
+
+Répartition par site:
+- adm: 5 appels d'offres
+- marchespublics: 10 appels d'offres
+- marsamaroc: 13 appels d'offres

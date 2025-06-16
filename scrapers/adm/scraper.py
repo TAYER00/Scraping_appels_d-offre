@@ -66,19 +66,44 @@ class AdmScraper:
                 # Extraire les données
                 print("Extraction des données...")
                 tenders = []
+                seen_objects = set()  # Pour suivre les objets déjà vus
                 tender_items = page.query_selector_all('div.contentColumn')
                 
                 for item in tender_items:
                     try:
                         objet = item.query_selector('div.info.p-card div.p-objet')
-                        date_limite = item.query_selector('div.leftColumn div.limita span')
+                        date_limite = item.query_selector('div.leftColumn div.limita')
                         
-                        tender = {
-                            'objet': objet.text_content().strip() if objet else 'N/A',
-                            'date_limite': date_limite.text_content().strip() if date_limite else 'N/A'
-                        }
+                        # Nettoyer et formater les données
+                        objet_text = objet.text_content().strip() if objet else 'N/A'
                         
-                        tenders.append(tender)
+                        # Extraire la date limite
+                        date_text = 'N/A'
+                        if date_limite:
+                            # Chercher d'abord dans le span
+                            date_span = date_limite.query_selector('span')
+                            if date_span:
+                                date_text = date_span.text_content().strip()
+                            # Si pas de span ou texte vide, prendre tout le contenu
+                            if not date_text:
+                                date_text = date_limite.text_content().strip()
+                        
+                        # Supprimer les labels redondants
+                        objet_text = objet_text.replace('Objet\n                                                        : \n                                                    ', '')
+                        date_text = date_text.replace('Date limite de remise des plis', '')
+                        
+                        # Nettoyer les textes
+                        objet_text = objet_text.strip()
+                        date_text = date_text.strip() if date_text.strip() else 'N/A'
+                        
+                        # Vérifier si cet objet a déjà été vu
+                        if objet_text not in seen_objects:
+                            seen_objects.add(objet_text)
+                            tender = {
+                                'objet': objet_text,
+                                'date_limite': date_text
+                            }
+                            tenders.append(tender)
                     except Exception as e:
                         print(f"Erreur lors de l'extraction d'un appel d'offres : {str(e)}")
                         continue
@@ -103,6 +128,8 @@ class AdmScraper:
                     print(f"Extraction terminée. {len(tenders)} appels d'offres extraits.")
                 else:
                     print("Aucun appel d'offres trouvé.")
+                
+                return tenders  # Return the list of tenders
                     
             except Exception as e:
                 print(f"Une erreur est survenue : {str(e)}")
