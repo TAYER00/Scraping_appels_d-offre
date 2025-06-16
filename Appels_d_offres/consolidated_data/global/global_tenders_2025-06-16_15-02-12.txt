@@ -54,17 +54,6 @@ Date limite: N/A
 
 === MARSAMAROC ===
 
-Objet: Nombre de résultats : 18
-Afficher
-10
-20
-50
-100
-500
-résultats / page
-/ 2
-Date limite: N/A
----
 Objet: Objet : Travaux de construction de murettes amovibles en béton armé pour le compte de Marsa Maroc et sa filiale SMA au Port d’Agadir
 Date limite: Mar 08 Juil 2025
 ---
@@ -95,16 +84,96 @@ Date limite: Jeu 26 Juin 2025
 Objet: Objet : FOURNITURE ET POSE DE CABLES ELECTRIQUE D’ALIMENTATION DES VANNES MOTORISEES DU NOUVEAU PIPE DE PROPANE AU PORT DE MOHAMMEDIA
 Date limite: Jeu 26 Juin 2025
 ---
-Objet: Afficher
-10
-20
-50
-100
-500
-résultats / page
-/ 2
-Date limite: N/A
+
+=== OFFRESONLINE ===
+
+Objet: Organisme : Centre hospitalier regional d'agadir. Objet : Appel d'offres ouvert a majoration : les prestations des activites d’accueil pour le centre hospitalier régional d’agadir
+Date limite: 19/06/2025
 ---
-Objet: 
-Date limite: N/A
+Objet: Organisme : Conseil national des droits de l'homme. Objet : La réalisation des prestations de gardiennage et de surveillance des locaux du conseil national des droits de l’homme (cndh)
+Date limite: 19/06/2025
+---
+Objet: Organisme : Societe de developpement local rabat sale temara prestations. Objet : Mise à disposition de la main d'oeuvre pour le besoin des services de la société rabat salé témara prestations, lot unique
+Date limite: 19/06/2025
+---
+Objet: Organisme : Societe de developpement local rabat sale temara prestations. Objet : Appel d'offres ouvert national a majoration sur offres de prix pour : « l'entretien et le nettoyage des batiments des abattoirs de la région et de leurs dépendances, à bouknadel - lot unique ».
+Date limite: 23/06/2025
+---
+Objet: Organisme : Centre hospitalier préfectoral de m’diq-fnideq. Objet : L’hygiène, et le nettoyage des locaux et des services du centre hospitalier préfectoral m’diq fnideq. (hopital mohammed vi m’diq et hopital hassan ii fnideq)
+Date limite: 25/06/2025
+---
+Objet: Organisme : Direction regionale de l'agence nationale des eaux et forets de beni mellal-khenifra. Objet : La fourniture de la main d'oeuvre pour le gardiennage et la surveillance des forets relevant de la dranef de béni mellal -khénifra , réparti en quatre (04)lots.
+Date limite: 25/06/2025
+---
+Objet: Organisme : Direction regionale de l’agriculture marrakech safi. Objet : Appel d'offres ouvert international à majoration, pour : gardiennage, surveillance et sécurité des locaux des directions provinciales de l’agriculture de marrakech, rhamna, chichaoua, essaouira, safi et la direction régionale de l’agriculture marrakech safi.
+Date limite: 30/06/2025
+---
+Objet: Organisme : Direction du port de casablanca et region. Objet : Prestation de gardiennage et surveillance du port de casablanca par les maitres-chiens
+Date limite: 01/07/2025
+---
+Objet: Organisme : Centre hospitalier provincial de tetouan. Objet : Execution des prestations de gardiennage des batiments relevant du centre hospitalier provincial de tetouan (hopital civil - hopital ben karrich et hopital errazi de tetouan)
+Date limite: 08/07/2025
+---
+Objet: Organisme : Centre hospitalier regional d'agadir. Objet : Les presttions des activites d'accueil pour le centre hospitalier régional d'agadir.
+Date limite: 22/07/2025
+---
+
+=== ROYALAIRMAROC ===
+
+Objet: Travaux extension des locaux DT
+Date limite: 17/06/2025 02:30
+---
+Objet: Expertise et conseil immobilier pour le développement du nouveau siège Casa-Anfa du Groupe Royal Air Maroc
+Date limite: 17/06/2025 02:30
+---
+Objet: Assistance maîtrise d’ouvrage déléguée fonctionnelle, technique, administrative & économique
+Date limite: 17/06/2025 02:30
+---
+Objet: AO short Term Lease of 01 CF34-10E6G07 engine
+Date limite: 20/06/2025 20:30
+---
+Objet: AO confection housses sièges B787
+Date limite: 20/06/2025 20:30
+---
+Objet: Assistance comptable
+Date limite: 23/06/2025 20:30
+---
+Objet: Remplacement Firewalls en fin de vie et gestion du spare
+Date limite: 25/06/2025 20:30
+---
+Objet: Entretien des espaces verts
+Date limite: 26/06/2025 02:30
+---
+Objet: AO achat lot d'outillage avions
+Date limite: 26/06/2025 08:29
+---
+Objet: Landing Gear Overhaul/Exchange for B737NG fleet
+Date limite: 27/06/2025 07:29
+---
+Objet: AO -Réparation APU 331-200 (B767)
+Date limite: 27/06/2025 20:30
+---
+Objet: RFQ catering à ABV
+Date limite: 28/06/2025 02:30
+---
+Objet: RFQ Catering à LOS
+Date limite: 28/06/2025 02:30
+---
+Objet: Lot 3: Gestion des campagnes Social Ads
+Date limite: 04/07/2025 02:30
+---
+Objet: Lot 2: Gestion des campagnes SEM & Display
+Date limite: 04/07/2025 02:30
+---
+Objet: Lot 1: Gestion des campagnes SEO sur les moteurs de recherche
+Date limite: 04/07/2025 02:30
+---
+Objet: AO catering aux aéroports l’acquisition des théières argentées et plateaux argentés
+Date limite: 09/07/2025 08:29
+---
+Objet: BIDT & ABUSE SOLUTION
+Date limite: 09/07/2025 20:30
+---
+Objet: Achat des uniformes RAM
+Date limite: 01/08/2025 02:30
 ---

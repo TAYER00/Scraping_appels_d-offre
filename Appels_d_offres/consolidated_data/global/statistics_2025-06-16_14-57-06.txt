@@ -1,8 +1,9 @@
 === Statistiques des appels d'offres ===
 
-Nombre total d'appels d'offres: 28
+Nombre total d'appels d'offres: 44
 
 Répartition par site:
 - adm: 5 appels d'offres
 - marchespublics: 10 appels d'offres
-- marsamaroc: 13 appels d'offres
+- offresonline: 10 appels d'offres
+- royalairmaroc: 19 appels d'offres

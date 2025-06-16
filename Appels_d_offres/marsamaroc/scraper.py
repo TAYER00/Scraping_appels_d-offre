@@ -97,9 +97,7 @@ class MarsaMarocScraper:
                     else:
                         tender['date_limite'] = 'N/A'
                     
-                    # N'ajouter que les appels d'offres valides
-                    if tender['objet'] != 'N/A' or tender['date_limite'] != 'N/A':
-                        tenders.append(tender)
+                    tenders.append(tender)
                 
                 print(f"Extraction terminée. {len(tenders)} appels d'offres extraits.")
                 browser.close()
@@ -108,7 +106,6 @@ class MarsaMarocScraper:
                 if tenders:
                     self._export_data(tenders)
                     print("Export des données terminé avec succès.")
-                    return tenders  # Retourner les données extraites
                 
         except Exception as e:
             print(f"Erreur lors du scraping: {str(e)}")
