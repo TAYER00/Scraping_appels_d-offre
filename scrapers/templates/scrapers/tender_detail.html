@@ -1,0 +1,60 @@
+{% extends 'scrapers/base.html' %}
+
+{% block title %}Détails de l'appel d'offres{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h1 class="h3 mb-0">Détails de l'appel d'offres</h1>
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <strong>Site :</strong>
+            </div>
+            <div class="col-md-9">
+                {{ tender.site }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <strong>Objet :</strong>
+            </div>
+            <div class="col-md-9">
+                {{ tender.objet }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <strong>Date limite :</strong>
+            </div>
+            <div class="col-md-9">
+                {{ tender.date_limite|date:"d/m/Y" }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <strong>Créé le :</strong>
+            </div>
+            <div class="col-md-9">
+                {{ tender.created_at|date:"d/m/Y H:i" }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <strong>Mis à jour le :</strong>
+            </div>
+            <div class="col-md-9">
+                {{ tender.updated_at|date:"d/m/Y H:i" }}
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a href="{% url 'tender-list' %}" class="btn btn-secondary">Retour à la liste</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'scrapers/base.html' %}
+
+{% block title %}Liste des appels d'offres{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Liste des appels d'offres</h1>
+
+<form class="row mb-4" method="get">
+    <div class="col-md-4">
+        <input type="text" name="search" class="form-control" placeholder="Rechercher par objet..." value="{{ request.GET.search }}">
+    </div>
+    <div class="col-md-3">
+        <select name="site" class="form-select">
+            <option value="">Tous les sites</option>
+            {% for site in sites %}
+            <option value="{{ site }}" {% if request.GET.site == site %}selected{% endif %}>{{ site }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-3">
+        <input type="date" name="date" class="form-control" value="{{ request.GET.date }}">
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">Filtrer</button>
+        {% if request.GET.search or request.GET.site or request.GET.date %}
+        <a href="{% url 'tender-list' %}" class="btn btn-secondary w-100 mt-2">Réinitialiser</a>
+        {% endif %}
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Site</th>
+                <th>Objet</th>
+                <th>Date limite</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tender in tenders %}
+            <tr>
+                <td>{{ tender.site }}</td>
+                <td>{{ tender.objet }}</td>
+                <td>{{ tender.date_limite|date:"d/m/Y" }}</td>
+                <td>
+                    <a href="{% url 'tender-detail' tender.id %}" class="btn btn-sm btn-primary">Détails</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="text-center">Aucun appel d'offres trouvé</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% if is_paginated %}
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo; Précédent</a>
+        </li>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+        <li class="page-item {% if num == page_obj.number %}active{% endif %}">
+            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+        </li>
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Suivant &raquo;</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+
+{% endblock %}

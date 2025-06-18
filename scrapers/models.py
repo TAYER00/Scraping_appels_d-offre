@@ -21,3 +21,16 @@ class ScrapeJob(models.Model):
     
     def __str__(self):
         return f"{self.site_name} - {self.status} - {self.run_at}"
+
+class Tender(models.Model):
+    site = models.CharField(max_length=100)
+    objet = models.TextField()
+    date_limite = models.DateField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-date_limite']
+
+    def __str__(self):
+        return f"{self.site} - {self.objet[:50]}"

@@ -1,0 +1,174 @@
+{% extends 'scrapers/base.html' %}
+
+{% block title %}Statistiques des appels d'offres{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4 text-center">Statistiques des appels d'offres</h1>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Total des appels d'offres</h5>
+                    <p class="card-text display-4 text-primary">{{ stats.total_tenders }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Sites actifs</h5>
+                    <p class="card-text display-4 text-success">{{ stats.tenders_by_site.keys|length }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Période couverte</h5>
+                    <p class="card-text display-4 text-info">{{ stats.tenders_by_date.keys|length }} mois</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body" style="height: 400px;">
+                    <h5 class="card-title text-center mb-4">Appels d'offres par site</h5>
+                    <canvas id="siteChart" style="max-height: 300px;"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body" style="height: 400px;">
+                    <h5 class="card-title text-center mb-4">Appels d'offres par mois</h5>
+                    <canvas id="dateChart" style="max-height: 300px;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Configuration des couleurs
+    const colors = [
+        '#4CAF50', '#2196F3', '#FFC107', '#E91E63', '#9C27B0',
+        '#FF5722', '#795548', '#607D8B', '#3F51B5', '#009688'
+    ];
+
+    // Graphique par site
+    const siteData = {
+        labels: {{ stats.tenders_by_site.keys|safe }},
+        datasets: [{
+            data: {{ stats.tenders_by_site.values|safe }},
+            backgroundColor: colors,
+            borderWidth: 2,
+            borderColor: '#ffffff'
+        }]
+    };
+
+    new Chart(document.getElementById('siteChart'), {
+        type: 'doughnut',
+        data: siteData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'right',
+                    labels: {
+                        padding: 20,
+                        font: {
+                            size: 12
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const label = context.label || '';
+                            const value = context.raw || 0;
+                            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const percentage = Math.round((value * 100) / total);
+                            return `${label}: ${value} (${percentage}%)`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Graphique par mois
+    const dateData = {
+        labels: {{ stats.tenders_by_date.keys|safe }},
+        datasets: [{
+            label: 'Nombre d\'appels d\'offres',
+            data: {{ stats.tenders_by_date.values|safe }},
+            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+            borderRadius: 5
+        }]
+    };
+
+    new Chart(document.getElementById('dateChart'), {
+        type: 'bar',
+        data: dateData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1,
+                        font: {
+                            size: 12
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.1)'
+                    }
+                },
+                x: {
+                    ticks: {
+                        font: {
+                            size: 12
+                        },
+                        maxRotation: 45,
+                        minRotation: 45
+                    },
+                    grid: {
+                        display: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            return 'Mois : ' + tooltipItems[0].label;
+                        },
+                        label: function(context) {
+                            return 'Appels d\'offres : ' + context.raw;
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+ </script>
+ {% endblock %}
