@@ -1,14 +1,8 @@
-Objet: Organisme : Centre hospitalier regional d'agadir. Objet : Appel d'offres ouvert a majoration : les prestations des activites d’accueil pour le centre hospitalier régional d’agadir
-Date limite: 19/06/2025
----
 Objet: Organisme : Conseil national des droits de l'homme. Objet : La réalisation des prestations de gardiennage et de surveillance des locaux du conseil national des droits de l’homme (cndh)
 Date limite: 19/06/2025
 ---
 Objet: Organisme : Societe de developpement local rabat sale temara prestations. Objet : Mise à disposition de la main d'oeuvre pour le besoin des services de la société rabat salé témara prestations, lot unique
 Date limite: 19/06/2025
----
-Objet: Organisme : Societe de developpement local rabat sale temara prestations. Objet : Appel d'offres ouvert national a majoration sur offres de prix pour : « l'entretien et le nettoyage des batiments des abattoirs de la région et de leurs dépendances, à bouknadel - lot unique ».
-Date limite: 23/06/2025
 ---
 Objet: Organisme : Centre hospitalier préfectoral de m’diq-fnideq. Objet : L’hygiène, et le nettoyage des locaux et des services du centre hospitalier préfectoral m’diq fnideq. (hopital mohammed vi m’diq et hopital hassan ii fnideq)
 Date limite: 25/06/2025
@@ -21,6 +15,9 @@ Date limite: 30/06/2025
 ---
 Objet: Organisme : Direction du port de casablanca et region. Objet : Prestation de gardiennage et surveillance du port de casablanca par les maitres-chiens
 Date limite: 01/07/2025
+---
+Objet: Organisme : Centre hospitalier provincial de kenitra. Objet : Appel d'offres ouvert a majoration : activités d’accueil des malades du centre hospitalier provincial de kenitra.
+Date limite: 07/07/2025
 ---
 Objet: Organisme : Centre hospitalier provincial de tetouan. Objet : Execution des prestations de gardiennage des batiments relevant du centre hospitalier provincial de tetouan (hopital civil - hopital ben karrich et hopital errazi de tetouan)
 Date limite: 08/07/2025

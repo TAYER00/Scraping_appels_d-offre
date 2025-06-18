@@ -1,6 +1,14 @@
 {
   "marchespublics": [
     {
+      "objet": "Objet : Acquisition des disjoncteurs 72,5 kV pour la Division Exploitation Transport Marrakech",
+      "date_limite": "N/A"
+    },
+    {
+      "objet": "Objet : Peinture des lignes HTB du réseau de Division Exploitation Transport Agadir Lot n° 1 : Peinture des lignes 60 & 225 kV Lot n° 2 : Peinture des lignes 400 kV",
+      "date_limite": "N/A"
+    },
+    {
       "objet": "Objet : Entretien et réparation de matériels électriques aux stations piscicoles relevant du Centre National d'Hydrobiologie et de Pisciculture d’Azrou (lot unique).",
       "date_limite": "N/A"
     },
@@ -29,101 +37,53 @@
       "date_limite": "N/A"
     },
     {
-      "objet": "Objet : Gardiennage et surveillance des Bâtiments Administratifs relevant de la Direction Régionale de l’Artisanat et de l’Economie Sociale Souss Massa et ses entités en lot unique.",
-      "date_limite": "N/A"
-    },
-    {
       "objet": "Objet : LA CONCEPTION ARCHITECTURALE ET LE SUIVI DES TRAVAUX DE CONSTRUCTION DU BLOC FONCIER DE L’ANCFCC DE TAOURIRT.",
-      "date_limite": "N/A"
-    },
-    {
-      "objet": "Objet : LA CONCEPTION ARCHITECTURALE ET LE SUIVI DES TRAVAUX DE CONSTRUCTION DU BLOC FONCIER DE L’ANCFCC DE GUERCIF",
       "date_limite": "N/A"
     }
   ],
-  "royalairmaroc": [
+  "marsamaroc": [
     {
-      "objet": "Travaux extension des locaux DT",
-      "date_limite": "17/06/2025 02:30"
+      "objet": "Objet : TRAVAUX DE VIDANGE DES BACS DE STOCKAGE DE LA STATION DEBALLASTAGE ET RINÇAGE DE MARSA MAROC AU PORT DE MOHAMMEDIA",
+      "date_limite": "Jeu 10 Juil 2025"
     },
     {
-      "objet": "Expertise et conseil immobilier pour le développement du nouveau siège Casa-Anfa du Groupe Royal Air Maroc",
-      "date_limite": "17/06/2025 02:30"
+      "objet": "Objet : Travaux de construction de murettes amovibles en béton armé pour le compte de Marsa Maroc et sa filiale SMA au Port d’Agadir",
+      "date_limite": "Mar 08 Juil 2025"
     },
     {
-      "objet": "Assistance maîtrise d’ouvrage déléguée fonctionnelle, technique, administrative & économique",
-      "date_limite": "17/06/2025 02:30"
+      "objet": "Objet : TRAVAUX D’AMENAGEMENT DU TERMINAL A CONTENEURS EST DU PORT DE NADOR WEST MED LOT : ELECTRIFICATION HT, BT ET ECT",
+      "date_limite": "Jeu 03 Juil 2025"
     },
     {
-      "objet": "AO short Term Lease of 01 CF34-10E6G07 engine",
-      "date_limite": "20/06/2025 20:30"
+      "objet": "Objet : Fourniture et installation des coffrets électriques pour le compte de MarsaMaroc au port de Tanger Med 1",
+      "date_limite": "Mer 02 Juil 2025"
     },
     {
-      "objet": "AO confection housses sièges B787",
-      "date_limite": "20/06/2025 20:30"
+      "objet": "Objet : FOURNITURE DE CHARIOTS ELEVATEURS DE MOYENNE CAPACITE A MARSA MAROC",
+      "date_limite": "Mer 02 Juil 2025"
     },
     {
-      "objet": "Assistance comptable",
-      "date_limite": "23/06/2025 20:30"
+      "objet": "Objet : Démolition d’un ancien bâtiment relevant de Marsa Maroc à la Direction de l’Exploitation au port de Casablanca Trafic Polyvalent",
+      "date_limite": "Mar 01 Juil 2025"
     },
     {
-      "objet": "Remplacement Firewalls en fin de vie et gestion du spare",
-      "date_limite": "25/06/2025 20:30"
+      "objet": "Objet : La fourniture des remorques basses et des remorques à cuvettes au Terminal à Conteneurs Est de Marsa Maroc Trafics Conteneur et Roulier et à la société Terminal à Conteneurs 3 du Port de Casablanca.",
+      "date_limite": "Mar 01 Juil 2025"
     },
     {
-      "objet": "Entretien des espaces verts",
-      "date_limite": "26/06/2025 02:30"
+      "objet": "Objet : SOUS TRAITANCE DES PRESATIONS DE GERBAGE ET CHARGEMENT DES MARCHANDISES PAR LES EQUIPEMENTS DE MARSA MAROC AU PORT DE JORF LASFAR",
+      "date_limite": "Lun 30 Juin 2025"
     },
     {
-      "objet": "AO achat lot d'outillage avions",
-      "date_limite": "26/06/2025 08:29"
+      "objet": "Objet : construction de deux hangars pour le stockage des vracs solides au Terminal Polyvalent de Marsa Maroc au Port de Casablanca.",
+      "date_limite": "Jeu 26 Juin 2025"
     },
     {
-      "objet": "Landing Gear Overhaul/Exchange for B737NG fleet",
-      "date_limite": "27/06/2025 07:29"
-    },
-    {
-      "objet": "AO -Réparation APU 331-200 (B767)",
-      "date_limite": "27/06/2025 20:30"
-    },
-    {
-      "objet": "RFQ catering à ABV",
-      "date_limite": "28/06/2025 02:30"
-    },
-    {
-      "objet": "RFQ Catering à LOS",
-      "date_limite": "28/06/2025 02:30"
-    },
-    {
-      "objet": "Lot 3: Gestion des campagnes Social Ads",
-      "date_limite": "04/07/2025 02:30"
-    },
-    {
-      "objet": "Lot 2: Gestion des campagnes SEM & Display",
-      "date_limite": "04/07/2025 02:30"
-    },
-    {
-      "objet": "Lot 1: Gestion des campagnes SEO sur les moteurs de recherche",
-      "date_limite": "04/07/2025 02:30"
-    },
-    {
-      "objet": "AO catering aux aéroports l’acquisition des théières argentées et plateaux argentés",
-      "date_limite": "09/07/2025 08:29"
-    },
-    {
-      "objet": "BIDT & ABUSE SOLUTION",
-      "date_limite": "09/07/2025 20:30"
-    },
-    {
-      "objet": "Achat des uniformes RAM",
-      "date_limite": "01/08/2025 02:30"
+      "objet": "Objet : Travaux mécaniques, électriques et divers des engins flottants de la société Marsa Maroc au Port d’Agadir",
+      "date_limite": "Jeu 26 Juin 2025"
     }
   ],
   "offresonline": [
-    {
-      "objet": "Organisme : Centre hospitalier regional d'agadir. Objet : Appel d'offres ouvert a majoration : les prestations des activites d’accueil pour le centre hospitalier régional d’agadir",
-      "date_limite": "19/06/2025"
-    },
     {
       "objet": "Organisme : Conseil national des droits de l'homme. Objet : La réalisation des prestations de gardiennage et de surveillance des locaux du conseil national des droits de l’homme (cndh)",
       "date_limite": "19/06/2025"
@@ -131,10 +91,6 @@
     {
       "objet": "Organisme : Societe de developpement local rabat sale temara prestations. Objet : Mise à disposition de la main d'oeuvre pour le besoin des services de la société rabat salé témara prestations, lot unique",
       "date_limite": "19/06/2025"
-    },
-    {
-      "objet": "Organisme : Societe de developpement local rabat sale temara prestations. Objet : Appel d'offres ouvert national a majoration sur offres de prix pour : « l'entretien et le nettoyage des batiments des abattoirs de la région et de leurs dépendances, à bouknadel - lot unique ».",
-      "date_limite": "23/06/2025"
     },
     {
       "objet": "Organisme : Centre hospitalier préfectoral de m’diq-fnideq. Objet : L’hygiène, et le nettoyage des locaux et des services du centre hospitalier préfectoral m’diq fnideq. (hopital mohammed vi m’diq et hopital hassan ii fnideq)",
@@ -153,6 +109,10 @@
       "date_limite": "01/07/2025"
     },
     {
+      "objet": "Organisme : Centre hospitalier provincial de kenitra. Objet : Appel d'offres ouvert a majoration : activités d’accueil des malades du centre hospitalier provincial de kenitra.",
+      "date_limite": "07/07/2025"
+    },
+    {
       "objet": "Organisme : Centre hospitalier provincial de tetouan. Objet : Execution des prestations de gardiennage des batiments relevant du centre hospitalier provincial de tetouan (hopital civil - hopital ben karrich et hopital errazi de tetouan)",
       "date_limite": "08/07/2025"
     },
@@ -164,6 +124,10 @@
   "adm": [
     {
       "objet": "La réalisation des travaux d’entretien de la chaussée des autoroutes Kenitra – Sidi El Yamani et Khémisset – Meknes « PROGRAMME 2025-2026 »",
+      "date_limite": "N/A"
+    },
+    {
+      "objet": "Mise en Conformité des lignes électriques HTA et BT interceptés par le projet de l’autoroute Rabat-Casablanca Continentale",
       "date_limite": "N/A"
     },
     {
