@@ -3,6 +3,7 @@ import pandas as pd
 import json
 import os
 from datetime import datetime
+import re
 
 class MarsaMarocScraper:
     def __init__(self):
@@ -80,30 +81,47 @@ class MarsaMarocScraper:
                     return
                 
                 print(f"Nombre d'appels d'offres trouvés: {len(tender_items)}")
+
+
+
+
+
+
+
+
                 for item in tender_items:
                     tender = {}
-                    
-                    # Extraire l'objet
                     objet_elem = item.query_selector('div.p-objet')
-                    if objet_elem:
-                        tender['objet'] = objet_elem.inner_text().strip()
-                    else:
-                        tender['objet'] = 'N/A'
-                    
-                    # Extraire la date limite
+                    tender['objet'] = objet_elem.inner_text().strip() if objet_elem else 'N/A'
+
                     date_elem = item.query_selector('span[style="display:;"]')
-                    if date_elem:
-                        tender['date_limite'] = date_elem.inner_text().strip()
-                    else:
-                        tender['date_limite'] = 'N/A'
-                    
-                    # N'ajouter que les appels d'offres valides
+                    tender['date_limite'] = date_elem.inner_text().strip() if date_elem else 'N/A'
+
+                    link = 'N/A'
+                    onclick_elems = item.query_selector_all('[onclick]')
+                    for el in onclick_elems:
+                        onclick = el.get_attribute('onclick') or ''
+                        print("DEBUG onclick raw:", onclick)  # 1️⃣ à observer
+
+                        match = re.search(r"(https?://[^\s'\";]+)", onclick)
+                        if match:
+                            link = match.group(1)
+                            break
+
+                    tender['link'] = link
                     if tender['objet'] != 'N/A' or tender['date_limite'] != 'N/A':
                         tenders.append(tender)
-                
+
                 print(f"Extraction terminée. {len(tenders)} appels d'offres extraits.")
-                browser.close()
+
+
                 
+
+
+
+
+
+
                 # Exporter les données
                 if tenders:
                     self._export_data(tenders)

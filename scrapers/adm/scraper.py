@@ -3,6 +3,7 @@ import os
 import json
 import pandas as pd
 from datetime import datetime
+import re
 
 class AdmScraper:
     def __init__(self):
@@ -73,10 +74,29 @@ class AdmScraper:
                     try:
                         objet = item.query_selector('div.info.p-card div.p-objet')
                         date_limite = item.query_selector('div.leftColumn div.limita')
+                        link_element = item.query_selector('div.info.p-card div.p-objet')
                         
+                        # Extraire le lien depuis l'attribut onclick
+                        link = 'N/A'
+                        link_element = page.query_selector('#tabNav > div.p-2 > div.content > div:nth-child(2)')
+
+                        if link_element:
+                            onclick = link_element.get_attribute('onclick')
+                            print("DEBUG onclick:", onclick)  # 🔍 à supprimer plus tard
+
+                            if onclick:
+                                match = re.search(r"location\.href\s*=\s*['\"]([^'\"]+)['\"]", onclick)
+                                if match:
+                                    link = match.group(1)
+
+
                         # Nettoyer et formater les données
                         objet_text = objet.text_content().strip() if objet else 'N/A'
                         
+
+
+
+
                         # Extraire la date limite
                         date_text = 'N/A'
                         if date_limite:
@@ -101,7 +121,8 @@ class AdmScraper:
                             seen_objects.add(objet_text)
                             tender = {
                                 'objet': objet_text,
-                                'date_limite': date_text
+                                'date_limite': date_text,
+                                'link': link
                             }
                             tenders.append(tender)
                     except Exception as e:
@@ -115,6 +136,7 @@ class AdmScraper:
                         for tender in tenders:
                             f.write(f"Objet: {tender['objet']}\n")
                             f.write(f"Date limite: {tender['date_limite']}\n")
+                            f.write(f"Lien: {tender['link']}\n")
                             f.write("---\n")
                     
                     # Export en JSON

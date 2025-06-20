@@ -7,17 +7,9 @@ from .models import Tender
 class TenderService:
     @staticmethod
     def get_latest_consolidated_data():
-        consolidated_dir = os.path.join('Appels_d_offres', 'consolidated_data', 'global')
-        if not os.path.exists(consolidated_dir):
+        file_path = os.path.join('data', 'consolidated', 'tenders.json')
+        if not os.path.exists(file_path):
             return None
-
-        # Trouver le fichier JSON le plus récent
-        json_files = [f for f in os.listdir(consolidated_dir) if f.startswith('global_tenders_') and f.endswith('.json')]
-        if not json_files:
-            return None
-
-        latest_file = max(json_files)
-        file_path = os.path.join(consolidated_dir, latest_file)
 
         with open(file_path, 'r', encoding='utf-8') as f:
             return json.load(f)
@@ -47,7 +39,8 @@ class TenderService:
                 Tender.objects.create(
                     site=site,
                     objet=tender.get('objet', ''),
-                    date_limite=date_limite
+                    date_limite=date_limite,
+                    link=tender.get('link', 'N/A')
                 )
 
     @staticmethod

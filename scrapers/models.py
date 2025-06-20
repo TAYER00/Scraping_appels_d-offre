@@ -26,6 +26,7 @@ class Tender(models.Model):
     site = models.CharField(max_length=100)
     objet = models.TextField()
     date_limite = models.DateField(null=True, blank=True)
+    link = models.URLField(max_length=500, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

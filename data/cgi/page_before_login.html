@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="fr"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>CGI eSourcing</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="../css/the-big-picture.css" rel="stylesheet">
+</head>
+
+<body>
+<div id="header"> 
+  
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container-fluid"> <a class="navbar-brand" href="#"><img src="../images/logo.png"></a>
+      <button class="navbar-toggler" id="button1" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"> <span><strong>Aide</strong></span> </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active font-weight-bold">
+            <h3>Besoin d'aide?</h3>
+            <p><img src="../images/user-icon.png">Fournisseur marocain: 05 30 80 30 80</p>
+            <p><img src="../images/user-icon.png"><a href="https://www.jaggaer.com/support/phone-numbers/" target="_blank">Fournisseur international</a></p>
+            <p><img src="../images/email-icon.png"><a href=" https://www.jaggaer.com/fr/envoyer-un-ticket-au-support-fournisseurs/" target="_blank"> Créer un ticket de support</a></p>
+          </li>
+        </ul>
+      </div>
+      <button class="navbar-toggler" type="button" id="button2" data-toggle="collapse" data-target="#navbarResponsive1" aria-controls="navbarResponsive1" aria-expanded="false" aria-label="Toggle navigation"> <span><b>Accès</b></span> </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive1">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <h3>ACCÈS <span>UTILISATEURS</span></h3>
+            <form target="_parent" action="/esop/guest/login.do" method="post" name="loginForm4" autocomplete="off">
+              <div>
+                <input type="hidden" name="loginNotOk" value="/web/error.html">
+                <input type="hidden" name="customLoginPage" value="/web/index.html">
+              </div>
+              <fieldset>
+                <legend></legend>
+                <div class="rowForm">
+                  <label accesskey="u" for="username">Identifiant</label>
+                  <input type="text" tabindex="1" id="username" name="login" placeholder="Identifiant">
+                </div>
+                <div class="rowForm">
+                  <label accesskey="p" for="password">Mot de passe</label>
+                  <input type="password" tabindex="2" id="password" placeholder="Mot de passe" name="password">
+                  <span class="mot_de_passe"> <a href="/esop/guest/go/public/lostPwd?locale=fr_FR&amp;customLoginPage=/web/index.html" alt="Mot de Passe oublié?" title="Mot de passe oublié?"><em>Mot de passe oublié?</em></a></span>
+                  <input type="submit" tabindex="3" alt="enter" value="Entrer" name="submit" class="btn float-right">
+                </div>
+              </fieldset>
+            </form>
+          </li>
+        </ul>
+      </div>
+      <div id="navbarResponsive3">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown" id="large-screen"> <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Changer de Langue</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown09" id="langue"> <a class="dropdown-item" href="#fr">French</a> <a class="dropdown-item" href="../web-en/index.html">English</a> </div>
+          </li>
+          <li class="nav-item dropdown" id="small-screen"> <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Langue</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown09" id="langue"> <a class="dropdown-item" href="#fr">French</a> <a class="dropdown-item" href="../web-en/index.html">English</a> </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- Page Content -->
+
+<div class="col-lg-12 home-title">
+  <div class="col-lg-12 opacity">
+    <h1>Bienvenue sur votre Plateforme «CGI <span>e</span>Sourcing»</h1>
+  </div>
+</div>
+<footer class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+  <div class="container-fluid">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <p><strong>Fournisseurs, faites-vous connaître !</strong></p>
+      <p>Complétez notre formulaire d'inscription en indiquant les informations de votre entreprise et votre activité</p>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="inner centered"> <a href="/esop/guest/go/public/registration?country=MA&amp;timezone=Africa%2FCasablanca&amp;prefLanguage=fr_FR" title="Inscription" onclick="target='_blank'" class="btn"><b>INSCRIVEZ-VOUS</b></a> <br>
+      </div>
+      <div class="inner centered"> <a href="/esop/guest/go/public/opportunity/current?locale=fr_FR&amp;customLoginPage=/web/index.html" title="Inscription" target="_blank" class="btn"><strong>Consultations ouvertes</strong></a> </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="inner centered">
+        <ul>
+          <li><a href="../documents/guide-fournisseur.pdf" target="_blank">Guide fournisseur</a></li>
+          <li><a href="../documents/conditions-generales.pdf" target="_blank">Conditions générales d’utilisation</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Bootstrap core JavaScript --> 
+<script src="../js/jquery.min.js"></script> 
+<script src="../js/bootstrap.bundle.min.js"></script>
+
+
+</body></html>

@@ -52,6 +52,19 @@
                 {{ tender.updated_at|date:"d/m/Y H:i" }}
             </div>
         </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <strong>Lien :</strong>
+            </div>
+            <div class="col-md-9">
+                {% if tender.link and tender.link != 'N/A' %}
+                    <a href="{{ tender.link }}" target="_blank" class="btn btn-primary">Voir l'appel d'offres</a>
+                {% else %}
+                    <span class="text-muted">Aucun lien disponible</span>
+                {% endif %}
+            </div>
+        </div>
     </div>
     <div class="card-footer">
         <a href="{% url 'tender-list' %}" class="btn btn-secondary">Retour à la liste</a>

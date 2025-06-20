@@ -61,9 +61,21 @@ class OffresonlineScraper:
                         date_limite = row.query_selector('td.classltdcenteralertNB > b:nth-child(1)')
                         
                         if objet and objet.text_content().strip():
+                            # Extraire le lien
+                            import re
+                            link_elem = row.query_selector('#tableao > tbody > tr:nth-child(1) > td.dselectionvu')
+                            link = 'N/A'
+                            if link_elem:
+                                onclick_attr = link_elem.get_attribute('onclick')
+                                if onclick_attr:
+                                    match = re.search(r"location\.href=['\"]([\^'\"]+)['\"]", onclick_attr)
+                                    if match:
+                                        link = match.group(1)
+
                             tender = {
                                 'objet': objet.text_content().strip(),
-                                'date_limite': date_limite.text_content().strip() if date_limite else 'N/A'
+                                'date_limite': date_limite.text_content().strip() if date_limite else 'N/A',
+                                'link': link
                             }
                             tenders.append(tender)
                     except Exception as e:

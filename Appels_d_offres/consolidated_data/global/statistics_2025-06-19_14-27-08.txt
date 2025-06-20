@@ -1,0 +1,6 @@
+=== Statistiques des appels d'offres ===
+
+Nombre total d'appels d'offres: 10
+
+Répartition par site:
+- marchespublics: 10 appels d'offres

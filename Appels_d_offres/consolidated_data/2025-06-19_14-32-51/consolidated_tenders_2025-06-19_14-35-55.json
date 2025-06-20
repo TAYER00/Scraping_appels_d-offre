@@ -1,46 +1,4 @@
 {
-  "marchespublics": [
-    {
-      "objet": "Objet : Acquisition des disjoncteurs 72,5 kV pour la Division Exploitation Transport Marrakech",
-      "date_limite": "N/A"
-    },
-    {
-      "objet": "Objet : Peinture des lignes HTB du réseau de Division Exploitation Transport Agadir Lot n° 1 : Peinture des lignes 60 & 225 kV Lot n° 2 : Peinture des lignes 400 kV",
-      "date_limite": "N/A"
-    },
-    {
-      "objet": "Objet : Entretien et réparation de matériels électriques aux stations piscicoles relevant du Centre National d'Hydrobiologie et de Pisciculture d’Azrou (lot unique).",
-      "date_limite": "N/A"
-    },
-    {
-      "objet": "Objet : Achat et fourniture de matériels de campement destinés aux Parcs Nationaux relevant de la Direction Régionale de l’Agence Nationale des Eaux et Forêts de Fès Meknès répartis en deux lots ...",
-      "date_limite": "N/A"
-    },
-    {
-      "objet": "Objet : Fourniture de la machine (AQUARIUS-TRUXOR DM 4700 B ou similaire) pour l’aménagement des milieux aquatiques relevant du Centre National d'Hydrobiologie et de Pisciculture (lot unique). ...",
-      "date_limite": "N/A"
-    },
-    {
-      "objet": "Objet : Fourniture et pose de panneaux de signalisation au Parc National d’Ifrane relevant de la Direction Régionale de l’Agence Nationale des Eaux et Forêts de Fès-Meknès (Lot unique). ...",
-      "date_limite": "N/A"
-    },
-    {
-      "objet": "Objet : LA CONCEPTION ARCHITECTURALE ET LE SUIVI DES TRAVAUX DE CONSTRUCTION DU BLOC FONCIER DE L’ANCFCC D’OUJDA.",
-      "date_limite": "N/A"
-    },
-    {
-      "objet": "Objet : Achat et installation de matériel, mobilier de bureau et matériel de cuisine destiné à l’Hôpital des Spécialités Régional de Tétouan",
-      "date_limite": "N/A"
-    },
-    {
-      "objet": "Objet : Les prestations de gardiennage et de surveillance des locaux de la Direction Régionale de l’Artisanat à Oujda et ses annexes administratives et des Etablissements de la Formation Professionnelles dans la Région de ...",
-      "date_limite": "N/A"
-    },
-    {
-      "objet": "Objet : LA CONCEPTION ARCHITECTURALE ET LE SUIVI DES TRAVAUX DE CONSTRUCTION DU BLOC FONCIER DE L’ANCFCC DE TAOURIRT.",
-      "date_limite": "N/A"
-    }
-  ],
   "marsamaroc": [
     {
       "objet": "Objet : TRAVAUX DE VIDANGE DES BACS DE STOCKAGE DE LA STATION DEBALLASTAGE ET RINÇAGE DE MARSA MAROC AU PORT DE MOHAMMEDIA",
@@ -63,6 +21,10 @@
       "date_limite": "Mer 02 Juil 2025"
     },
     {
+      "objet": "Objet : Fourniture des chariots élévateurs sur pneus à la Direction de l’Exploitation au Port de Casablanca Trafic Polyvalent.",
+      "date_limite": "Mer 02 Juil 2025"
+    },
+    {
       "objet": "Objet : Démolition d’un ancien bâtiment relevant de Marsa Maroc à la Direction de l’Exploitation au port de Casablanca Trafic Polyvalent",
       "date_limite": "Mar 01 Juil 2025"
     },
@@ -76,10 +38,6 @@
     },
     {
       "objet": "Objet : construction de deux hangars pour le stockage des vracs solides au Terminal Polyvalent de Marsa Maroc au Port de Casablanca.",
-      "date_limite": "Jeu 26 Juin 2025"
-    },
-    {
-      "objet": "Objet : Travaux mécaniques, électriques et divers des engins flottants de la société Marsa Maroc au Port d’Agadir",
       "date_limite": "Jeu 26 Juin 2025"
     }
   ],
@@ -123,6 +81,10 @@
   ],
   "adm": [
     {
+      "objet": "La réalisation des travaux de renforcement de certains ouvrages hydrauliques busés à risque de rupture sur l’axe autoroutier Rabat - Oujda",
+      "date_limite": "N/A"
+    },
+    {
       "objet": "La réalisation des travaux d’entretien de la chaussée des autoroutes Kenitra – Sidi El Yamani et Khémisset – Meknes « PROGRAMME 2025-2026 »",
       "date_limite": "N/A"
     },
@@ -140,10 +102,6 @@
     },
     {
       "objet": "Mise en conformité de la ligne 60 kV N°107-1 MOHAMMEDIA-ONCF EL MANSOURIA nécessitée par le projet d’aménagement des Routes Provinciales N°3304 et N°3308 pour la desserte du futur Grand Stade HASSAN II - Province",
-      "date_limite": "N/A"
-    },
-    {
-      "objet": "La réalisation des prestations de transport du personnel d’ADM",
       "date_limite": "N/A"
     }
   ]

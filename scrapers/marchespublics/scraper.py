@@ -98,17 +98,17 @@ class MarchesPublicsScraper:
             with open(txt_path, 'w', encoding='utf-8') as f:
                 for tender in tenders:
                     f.write(f"Objet: {tender.get('objet', 'N/A')}\n")
-                    f.write(f"Date Limite: {tender.get('date_limite', 'N/A')}\n")
+                    f.write(f"Date limite: {tender.get('date_limite', 'N/A')}\n")
                     f.write('---\n')
             print(f"Données exportées vers {txt_path}")
-        
+            
             # Export to JSON
             print("Exportation vers JSON...")
             json_path = f'{self.data_dir}/marches_publics_tenders.json'
             with open(json_path, 'w', encoding='utf-8') as f:
                 json.dump(tenders, f, ensure_ascii=False, indent=2)
             print(f"Données exportées vers {json_path}")
-        
+
             # Export to Excel
             print("Exportation vers Excel...")
             excel_path = f'{self.data_dir}/marches_publics_tenders.xlsx'
