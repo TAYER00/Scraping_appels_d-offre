@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright
 import os
 import json
 import pandas as pd
-from datetime import datetime
+import re
 
 class OffresonlineScraper:
     def __init__(self):
@@ -15,103 +15,88 @@ class OffresonlineScraper:
             page = browser.new_page()
             
             try:
-                # Accéder à la page de connexion
                 print("Navigation vers la page de connexion...")
                 page.goto('https://offresonline.com/')
                 
-                # Cliquer sur le bouton de connexion
                 print("Clic sur le bouton de connexion...")
                 page.click('#main-nav > ul > li:nth-child(2) > a')
                 
-                # Attendre que les champs de connexion soient visibles
+                print("Attente des champs de connexion...")
                 page.wait_for_selector('#Login')
                 page.wait_for_selector('#pwd')
                 
-                # Remplir les informations d'authentification
                 print("Remplissage des informations d'authentification...")
                 page.fill('#Login', 'HYATT2')
                 page.fill('#pwd', 'HYATTHALMI')
                 
-                # Cliquer sur le bouton de soumission
                 print("Soumission du formulaire de connexion...")
                 page.click('#buuuttt')
                 
-                # Attendre 10 secondes après la connexion
+                print("Attente après connexion...")
                 page.wait_for_timeout(10000)
                 
-                # Naviguer vers la page des appels d'offres
                 print("Navigation vers la page des appels d'offres...")
                 page.goto('https://offresonline.com/Admin/alert.aspx?i=a&url=5')
                 
-                # Attendre 10 secondes après la navigation
-                page.wait_for_timeout(10000)
-                
-                # Attendre que le tableau des appels d'offres soit visible
                 print("Attente du chargement du tableau des appels d'offres...")
                 page.wait_for_selector('#tableao')
                 
-                # Extraire les données
-                print("Extraction des données...")
                 tenders = []
-                rows = page.query_selector_all('#tableao tr')
-                
-                for row in rows:
-                    try:
-                        objet = row.query_selector('td.classltdleftalert, td.classltdleftalertnonvueNB')
-                        date_limite = row.query_selector('td.classltdcenteralertNB > b:nth-child(1)')
-                        
-                        if objet and objet.text_content().strip():
-                            # Extraire le lien
-                            import re
-                            link_elem = row.query_selector('#tableao > tbody > tr:nth-child(1) > td.dselectionvu')
-                            link = 'N/A'
-                            if link_elem:
-                                onclick_attr = link_elem.get_attribute('onclick')
-                                if onclick_attr:
-                                    match = re.search(r"location\.href=['\"]([\^'\"]+)['\"]", onclick_attr)
-                                    if match:
-                                        link = match.group(1)
-
-                            tender = {
-                                'objet': objet.text_content().strip(),
-                                'date_limite': date_limite.text_content().strip() if date_limite else 'N/A',
-                                'link': link
-                            }
-                            tenders.append(tender)
-                    except Exception as e:
-                        print(f"Erreur lors de l'extraction d'une ligne : {str(e)}")
+                for i in range(1, 13):
+                    print(f"Extraction de l'appel d'offres {i}...")
+                    
+                    # XPath pour chaque élément
+                    objet_xpath = f"//table[@id='tableao']//tr[{i}]/td[2]"
+                    date_xpath = f"//table[@id='tableao']//tr[{i}]/td[3]/b[1]"
+                    
+                    objet_elem = page.locator(f"xpath={objet_xpath}")
+                    date_elem = page.locator(f"xpath={date_xpath}")
+                    
+                    if objet_elem.count() == 0:
+                        print(f"Ligne {i} non trouvée, passage à la suivante.")
                         continue
+                    
+                    objet_text = objet_elem.text_content()
+                    if not objet_text:
+                        print(f"Objet vide à la ligne {i}, passage à la suivante.")
+                        continue
+                    
+                    tender = {
+                        'objet': objet_text.strip()
+                    }
+                    
+                    if date_elem.count() > 0:
+                        date_text = date_elem.text_content()
+                        tender['date_limite'] = date_text.strip() if date_text else 'N/A'
+                    else:
+                        tender['date_limite'] = 'N/A'
+                    
+                    # Extraction du lien dans l'attribut onclick
+                    onclick = objet_elem.get_attribute('onclick')
+                    if onclick:
+                        # Expression simple pour extraire l'URL entre apostrophes dans window.location='...'
+                        match = re.search(r"window\.location\s*=\s*'([^']+)'", onclick)
+                        if not match:
+                            # Essayer aussi window.open('...')
+                            match = re.search(r"window\.open\s*\(\s*'([^']+)'", onclick)
+                        tender['link'] = match.group(1) if match else None
+                    else:
+                        tender['link'] = None
+                    
+                    print(f"Objet: {tender['objet'][:50]}..., Date limite: {tender['date_limite']}, Link: {tender['link']}")
+                    tenders.append(tender)
                 
-                # Exporter les données
-                if tenders:
-                    # Export en format texte
-                    with open(os.path.join(self.data_dir, 'data.txt'), 'w', encoding='utf-8') as f:
-                        for tender in tenders:
-                            f.write(f"Objet: {tender['objet']}\n")
-                            f.write(f"Date limite: {tender['date_limite']}\n")
-                            f.write("---\n")
-                    
-                    # Export en JSON
-                    with open(os.path.join(self.data_dir, 'offresonline_tenders.json'), 'w', encoding='utf-8') as f:
-                        json.dump(tenders, f, ensure_ascii=False, indent=2)
-                    
-                    # Export en Excel
-                    df = pd.DataFrame(tenders)
-                    df.to_excel(os.path.join(self.data_dir, 'offresonline_tenders.xlsx'), index=False)
-                    
-                    print(f"Extraction terminée. {len(tenders)} appels d'offres extraits.")
-                else:
-                    print("Aucun appel d'offres trouvé.")
+                # Sauvegarder les résultats dans offresonline_tenders.json
+                json_path = os.path.join(self.data_dir, 'offresonline_tenders.json')
+                with open(json_path, 'w', encoding='utf-8') as f:
+                    json.dump(tenders, f, ensure_ascii=False, indent=4)
                 
-                return tenders
-                    
-            except Exception as e:
-                print(f"Une erreur est survenue : {str(e)}")
-                return []
-            
+                print(f"Données sauvegardées dans {json_path}")
+                
             finally:
                 browser.close()
 
-if __name__ == '__main__':
+# Pour lancer le scraper
+if __name__ == "__main__":
     scraper = OffresonlineScraper()
     scraper.scrape()

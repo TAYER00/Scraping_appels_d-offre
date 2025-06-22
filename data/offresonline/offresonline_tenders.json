@@ -1,47 +1,62 @@
 [
-  {
-    "objet": "Organisme : Conseil national des droits de l'homme. Objet : La réalisation des prestations de gardiennage et de surveillance des locaux du conseil national des droits de l’homme (cndh)",
-    "date_limite": "19/06/2025",
-    "link": "N/A"
-  },
-  {
-    "objet": "Organisme : Societe de developpement local rabat sale temara prestations. Objet : Mise à disposition de la main d'oeuvre pour le besoin des services de la société rabat salé témara prestations, lot unique",
-    "date_limite": "19/06/2025",
-    "link": "N/A"
-  },
-  {
-    "objet": "Organisme : Centre hospitalier préfectoral de m’diq-fnideq. Objet : L’hygiène, et le nettoyage des locaux et des services du centre hospitalier préfectoral m’diq fnideq. (hopital mohammed vi m’diq et hopital hassan ii fnideq)",
-    "date_limite": "25/06/2025",
-    "link": "N/A"
-  },
-  {
-    "objet": "Organisme : Direction regionale de l'agence nationale des eaux et forets de beni mellal-khenifra. Objet : La fourniture de la main d'oeuvre pour le gardiennage et la surveillance des forets relevant de la dranef de béni mellal -khénifra , réparti en quatre (04)lots.",
-    "date_limite": "25/06/2025",
-    "link": "N/A"
-  },
-  {
-    "objet": "Organisme : Direction regionale de l’agriculture marrakech safi. Objet : Appel d'offres ouvert international à majoration, pour : gardiennage, surveillance et sécurité des locaux des directions provinciales de l’agriculture de marrakech, rhamna, chichaoua, essaouira, safi et la direction régionale de l’agriculture marrakech safi.",
-    "date_limite": "30/06/2025",
-    "link": "N/A"
-  },
-  {
-    "objet": "Organisme : Direction du port de casablanca et region. Objet : Prestation de gardiennage et surveillance du port de casablanca par les maitres-chiens",
-    "date_limite": "01/07/2025",
-    "link": "N/A"
-  },
-  {
-    "objet": "Organisme : Centre hospitalier provincial de kenitra. Objet : Appel d'offres ouvert a majoration : activités d’accueil des malades du centre hospitalier provincial de kenitra.",
-    "date_limite": "07/07/2025",
-    "link": "N/A"
-  },
-  {
-    "objet": "Organisme : Centre hospitalier provincial de tetouan. Objet : Execution des prestations de gardiennage des batiments relevant du centre hospitalier provincial de tetouan (hopital civil - hopital ben karrich et hopital errazi de tetouan)",
-    "date_limite": "08/07/2025",
-    "link": "N/A"
-  },
-  {
-    "objet": "Organisme : Centre hospitalier regional d'agadir. Objet : Les presttions des activites d'accueil pour le centre hospitalier régional d'agadir.",
-    "date_limite": "22/07/2025",
-    "link": "N/A"
-  }
+    {
+        "objet": "Organisme : Direction regionale de l'agence nationale des eaux et forets de beni mellal-khenifra. Objet : La fourniture de la main d'oeuvre pour le gardiennage et la surveillance des forets relevant de la dranef de béni mellal -khénifra , réparti en quatre (04)lots.",
+        "date_limite": "25/06/2025",
+        "link": null
+    },
+    {
+        "objet": "Organisme : Centre hospitalier préfectoral de m’diq-fnideq. Objet : L’hygiène, et le nettoyage des locaux et des services du centre hospitalier préfectoral m’diq fnideq. (hopital mohammed vi m’diq et hopital hassan ii fnideq)",
+        "date_limite": "25/06/2025",
+        "link": null
+    },
+    {
+        "objet": "Organisme : Direction regionale de l’agriculture marrakech safi. Objet : Appel d'offres ouvert international à majoration, pour : gardiennage, surveillance et sécurité des locaux des directions provinciales de l’agriculture de marrakech, rhamna, chichaoua, essaouira, safi et la direction régionale de l’agriculture marrakech safi.",
+        "date_limite": "30/06/2025",
+        "link": null
+    },
+    {
+        "objet": "Organisme : Societe tanger med utilities. Objet : Gardiennage et surveillance des chantiers aux zones gérées par tmu tanger med utilities (tmu).",
+        "date_limite": "01/07/2025",
+        "link": null
+    },
+    {
+        "objet": "Organisme : Direction du port de casablanca et region. Objet : Prestation de gardiennage et surveillance du port de casablanca par les maitres-chiens",
+        "date_limite": "01/07/2025",
+        "link": null
+    },
+    {
+        "objet": "Organisme : Direction provinciale de tiznit. Objet : Appel d’offres ouvert international a majoration pour prestations de surveillance et de gardiennage des installations sportives a la province de tiznit en 4 lots:",
+        "date_limite": "03/07/2025",
+        "link": null
+    },
+    {
+        "objet": "Organisme : Centre hospitalier provincial de kenitra. Objet : Appel d'offres ouvert a majoration : activités d’accueil des malades du centre hospitalier provincial de kenitra.",
+        "date_limite": "07/07/2025",
+        "link": null
+    },
+    {
+        "objet": "Organisme : Centre hospitalier provincial de tetouan. Objet : Execution des prestations de gardiennage des batiments relevant du centre hospitalier provincial de tetouan (hopital civil - hopital ben karrich et hopital errazi de tetouan)",
+        "date_limite": "08/07/2025",
+        "link": null
+    },
+    {
+        "objet": "Organisme : Centre hospitalier regional d'agadir. Objet : Les presttions des activites d'accueil pour le centre hospitalier régional d'agadir.",
+        "date_limite": "22/07/2025",
+        "link": null
+    },
+    {
+        "objet": "Organisme : Direction des affaires administratives. Objet : Appel d’offres ouvert international, à majoration n° 16/2025, pour l’entretien et nettoyage des batiments et locaux administratifs du service central du ministère de l’intérieur et ses annexes à rabat et salé (lot unique).",
+        "date_limite": "28/07/2025",
+        "link": null
+    },
+    {
+        "objet": "Organisme : Dr de l'artisanat region rabat-zemour-zaier. Objet : Ao ouvert international a majoration : prestations de gardiennage et de surveillance des locaux de la direction régionale de l’artisanat et de l’économie sociale et solidaire de rabat et des etablissements de la formation professionnelles et des agences relevant du secrétariat d’etat chargé de l’artisanat et de l’economie sociale et solidaire",
+        "date_limite": "28/07/2025",
+        "link": null
+    },
+    {
+        "objet": "Organisme : Direction régionale de l’artisanat d’agadir. Objet : Ao ouvert international a majoration : gardiennage et surveillance des batiments administratifs relevant de la direction régionale de l’artisanat et de l’economie sociale souss massa et ses entités en lot unique.",
+        "date_limite": "05/08/2025",
+        "link": null
+    }
 ]

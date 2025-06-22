@@ -3,76 +3,142 @@
 {% block title %}Statistiques des appels d'offres{% endblock %}
 
 {% block content %}
-<div class="container py-4">
-    <h1 class="mb-4 text-center">Statistiques des appels d'offres</h1>
+<div class="fade-in">
+    <h1 class="text-3xl font-bold text-gray-800 dark:text-white text-center mb-8 slide-in-down">Statistiques des appels d'offres</h1>
 
-    <div class="row">
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Total des appels d'offres</h5>
-                    <p class="card-text display-4 text-primary">{{ stats.total_tenders }}</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <!-- Total des appels d'offres -->
+        <div class="stat-card bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 transform hover:scale-105 transition-all duration-300 hover:shadow-xl border border-gray-200 dark:border-gray-700">
+            <div class="text-center">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900 mb-6 transform hover:rotate-12 transition-transform duration-300">
+                    <i class="fas fa-file-alt text-2xl text-primary animate-pulse"></i>
                 </div>
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Total des appels d'offres</h2>
+                <p class="text-5xl font-bold text-primary counter">{{ stats.total_tenders }}</p>
             </div>
         </div>
 
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Sites actifs</h5>
-                    <p class="card-text display-4 text-success">{{ stats.tenders_by_site.keys|length }}</p>
+        <!-- Sites actifs -->
+        <div class="stat-card bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 transform hover:scale-105 transition-all duration-300 hover:shadow-xl border border-gray-200 dark:border-gray-700">
+            <div class="text-center">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 dark:bg-green-900 mb-6 transform hover:rotate-12 transition-transform duration-300">
+                    <i class="fas fa-globe text-2xl text-green-500 animate-pulse"></i>
                 </div>
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Sites actifs</h2>
+                <p class="text-5xl font-bold text-green-500 counter">{{ stats.tenders_by_site.keys|length }}</p>
             </div>
         </div>
 
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Période couverte</h5>
-                    <p class="card-text display-4 text-info">{{ stats.tenders_by_date.keys|length }} mois</p>
+        <!-- Période couverte -->
+        <div class="stat-card bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 transform hover:scale-105 transition-all duration-300 hover:shadow-xl border border-gray-200 dark:border-gray-700">
+            <div class="text-center">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900 mb-6 transform hover:rotate-12 transition-transform duration-300">
+                    <i class="fas fa-calendar text-2xl text-purple-500 animate-pulse"></i>
                 </div>
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Période couverte</h2>
+                <p class="text-5xl font-bold text-purple-500 counter">{{ stats.tenders_by_date.keys|length }} <span class="text-xl">mois</span></p>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-sm">
-                <div class="card-body" style="height: 400px;">
-                    <h5 class="card-title text-center mb-4">Appels d'offres par site</h5>
-                    <canvas id="siteChart" style="max-height: 300px;"></canvas>
-                </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Graphique par site -->
+        <div class="chart-card bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-700 transform hover:shadow-xl transition-all duration-300">
+            <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 text-center mb-8 flex items-center justify-center">
+                <i class="fas fa-chart-pie mr-3 text-primary"></i>Appels d'offres par site
+            </h2>
+            <div class="relative" style="height: 400px;">
+                <canvas id="siteChart"></canvas>
             </div>
         </div>
 
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-sm">
-                <div class="card-body" style="height: 400px;">
-                    <h5 class="card-title text-center mb-4">Appels d'offres par mois</h5>
-                    <canvas id="dateChart" style="max-height: 300px;"></canvas>
-                </div>
+        <!-- Graphique par mois -->
+        <div class="chart-card bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-700 transform hover:shadow-xl transition-all duration-300">
+            <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 text-center mb-8 flex items-center justify-center">
+                <i class="fas fa-chart-line mr-3 text-green-500"></i>Appels d'offres par mois
+            </h2>
+            <div class="relative" style="height: 400px;">
+                <canvas id="dateChart"></canvas>
             </div>
         </div>
     </div>
 </div>
 
+<style>
+    .slide-in-down {
+        animation: slideInDown 0.5s ease-out;
+    }
+
+    @keyframes slideInDown {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .stat-card {
+        animation: fadeInScale 0.6s ease-out;
+    }
+
+    .chart-card {
+        animation: fadeInScale 0.8s ease-out;
+    }
+
+    @keyframes fadeInScale {
+        from {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .counter {
+        animation: countUp 2s ease-out;
+    }
+
+    @keyframes countUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Configuration des couleurs
+    // Configuration des couleurs avec des teintes plus vives
     const colors = [
-        '#4CAF50', '#2196F3', '#FFC107', '#E91E63', '#9C27B0',
-        '#FF5722', '#795548', '#607D8B', '#3F51B5', '#009688'
+        '#3B82F6', '#10B981', '#8B5CF6', '#EC4899', '#F59E0B',
+        '#EF4444', '#6366F1', '#14B8A6', '#F97316', '#8B5CF6'
     ];
 
-    // Graphique par site
+    // Configuration commune pour le mode sombre avec des couleurs plus contrastées
+    const isDark = document.documentElement.classList.contains('dark');
+    Chart.defaults.color = isDark ? '#D1D5DB' : '#4B5563';
+    Chart.defaults.borderColor = isDark ? '#374151' : '#E5E7EB';
+
+    // Graphique par site avec des animations améliorées
     const siteData = {
         labels: {{ stats.tenders_by_site.keys|safe }},
         datasets: [{
             data: {{ stats.tenders_by_site.values|safe }},
-            backgroundColor: colors,
+            backgroundColor: colors.map(color => isDark ? `${color}CC` : `${color}99`),
             borderWidth: 2,
-            borderColor: '#ffffff'
+            borderColor: isDark ? '#1F2937' : '#ffffff',
+            hoverBackgroundColor: colors,
+            hoverBorderWidth: 3
         }]
     };
 
@@ -88,87 +154,130 @@ document.addEventListener('DOMContentLoaded', function() {
                     labels: {
                         padding: 20,
                         font: {
-                            size: 12
-                        }
+                            size: 13,
+                            family: '"Inter", sans-serif',
+                            weight: '500'
+                        },
+                        color: isDark ? '#D1D5DB' : '#4B5563'
                     }
                 },
                 tooltip: {
+                    backgroundColor: isDark ? '#374151' : '#ffffff',
+                    titleColor: isDark ? '#ffffff' : '#000000',
+                    bodyColor: isDark ? '#E5E7EB' : '#4B5563',
+                    borderColor: isDark ? '#4B5563' : '#E5E7EB',
+                    borderWidth: 1,
+                    padding: 12,
+                    cornerRadius: 8,
+                    titleFont: {
+                        size: 14,
+                        weight: 'bold'
+                    },
+                    bodyFont: {
+                        size: 13
+                    },
                     callbacks: {
                         label: function(context) {
                             const label = context.label || '';
                             const value = context.raw || 0;
                             const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                            const percentage = Math.round((value * 100) / total);
+                            const percentage = ((value / total) * 100).toFixed(1);
                             return `${label}: ${value} (${percentage}%)`;
                         }
                     }
                 }
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true,
+                duration: 2000,
+                easing: 'easeOutQuart'
             }
         }
     });
 
-    // Graphique par mois
+    // Graphique par mois avec des animations améliorées
     const dateData = {
         labels: {{ stats.tenders_by_date.keys|safe }},
         datasets: [{
             label: 'Nombre d\'appels d\'offres',
             data: {{ stats.tenders_by_date.values|safe }},
-            backgroundColor: 'rgba(54, 162, 235, 0.7)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1,
-            borderRadius: 5
+            borderColor: '#10B981',
+            backgroundColor: isDark ? 'rgba(16, 185, 129, 0.2)' : 'rgba(16, 185, 129, 0.1)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#10B981',
+            pointBorderColor: isDark ? '#1F2937' : '#ffffff',
+            pointHoverBackgroundColor: '#ffffff',
+            pointHoverBorderColor: '#10B981',
+            pointRadius: 6,
+            pointHoverRadius: 8
         }]
     };
 
     new Chart(document.getElementById('dateChart'), {
-        type: 'bar',
+        type: 'line',
         data: dateData,
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        stepSize: 1,
-                        font: {
-                            size: 12
-                        }
-                    },
-                    grid: {
-                        color: 'rgba(0, 0, 0, 0.1)'
-                    }
-                },
-                x: {
-                    ticks: {
-                        font: {
-                            size: 12
-                        },
-                        maxRotation: 45,
-                        minRotation: 45
-                    },
-                    grid: {
-                        display: false
-                    }
-                }
-            },
             plugins: {
                 legend: {
                     display: false
                 },
                 tooltip: {
-                    callbacks: {
-                        title: function(tooltipItems) {
-                            return 'Mois : ' + tooltipItems[0].label;
-                        },
-                        label: function(context) {
-                            return 'Appels d\'offres : ' + context.raw;
+                    backgroundColor: isDark ? '#374151' : '#ffffff',
+                    titleColor: isDark ? '#ffffff' : '#000000',
+                    bodyColor: isDark ? '#E5E7EB' : '#4B5563',
+                    borderColor: isDark ? '#4B5563' : '#E5E7EB',
+                    borderWidth: 1,
+                    padding: 12,
+                    cornerRadius: 8,
+                    titleFont: {
+                        size: 14,
+                        weight: 'bold'
+                    },
+                    bodyFont: {
+                        size: 13
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: isDark ? '#374151' : '#E5E7EB',
+                        drawBorder: false
+                    },
+                    ticks: {
+                        precision: 0,
+                        font: {
+                            size: 12
+                        }
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 12
                         }
                     }
                 }
+            },
+            animation: {
+                duration: 2000,
+                easing: 'easeOutQuart'
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index'
             }
         }
     });
 });
- </script>
- {% endblock %}
+</script>
+{% endblock %}

@@ -74,53 +74,65 @@ class MarsaMarocScraper:
                 # Extraire les appels d'offres
                 print("Extraction des appels d'offres...")
                 tenders = []
-                tender_items = page.query_selector_all('div.content > div')
                 
-                if not tender_items:
-                    print("Aucun appel d'offres trouvé")
-                    return
+                # Boucler sur les indices de 2 à 10 pour extraire les appels d'offres
+                for index in range(2, 11):
+                    try:
+                        print(f"Extraction de l'appel d'offres {index}...")
+                        
+                        # Construire le sélecteur pour l'élément actuel
+                        selector = f"#tabNav > div.p-2 > div.content > div:nth-child({index})"
+                        tender_elem = page.query_selector(selector)
+                        
+                        if not tender_elem:
+                            print(f"Élément {index} non trouvé, passage au suivant")
+                            continue
+                        
+                        tender = {}
+                        
+                        # Extraire l'objet
+                        print(f"Extraction de l'objet pour l'élément {index}...")
+                        objet_elem = tender_elem.query_selector('div.p-objet')
+                        if objet_elem:
+                            tender['objet'] = objet_elem.inner_text().strip()
+                            print(f"Objet trouvé: {tender['objet'][:50]}...")
+                        else:
+                            print(f"Pas d'objet trouvé pour l'élément {index}")
+                            continue
+                        
+                        # Extraire la date limite
+                        print(f"Extraction de la date limite pour l'élément {index}...")
+                        date_elem = tender_elem.query_selector('span[style="display:;"]')
+                        if date_elem:
+                            tender['date_limite'] = date_elem.inner_text().strip()
+                            print(f"Date limite trouvée: {tender['date_limite']}")
+                        else:
+                            tender['date_limite'] = 'N/A'
+                        
+                        # Extraire le lien
+                        print(f"Extraction du lien pour l'élément {index}...")
+                        link_selector = f"#tabNav > div.p-2 > div.content > div:nth-child({index})"
+                        link_elem = page.query_selector(link_selector)
+                        link = 'N/A'
+                        if link_elem:
+                            onclick = link_elem.get_attribute('onclick')
+                            if onclick:
+                                match = re.search(r"location\.href=['\"](.*?)['\"]", onclick)
+                                if match:
+                                    link = match.group(1)
+                        
+                        tender['link'] = link
+                        print(f"Lien trouvé: {link}")
+                        
+                        if tender and 'objet' in tender:
+                            tenders.append(tender)
+                            print(f"Appel d'offres {index} ajouté avec succès")
+                    
+                    except Exception as e:
+                        print(f"Erreur lors de l'extraction de l'élément {index}: {str(e)}")
+                        continue
                 
-                print(f"Nombre d'appels d'offres trouvés: {len(tender_items)}")
-
-
-
-
-
-
-
-
-                for item in tender_items:
-                    tender = {}
-                    objet_elem = item.query_selector('div.p-objet')
-                    tender['objet'] = objet_elem.inner_text().strip() if objet_elem else 'N/A'
-
-                    date_elem = item.query_selector('span[style="display:;"]')
-                    tender['date_limite'] = date_elem.inner_text().strip() if date_elem else 'N/A'
-
-                    link = 'N/A'
-                    onclick_elems = item.query_selector_all('[onclick]')
-                    for el in onclick_elems:
-                        onclick = el.get_attribute('onclick') or ''
-                        print("DEBUG onclick raw:", onclick)  # 1️⃣ à observer
-
-                        match = re.search(r"(https?://[^\s'\";]+)", onclick)
-                        if match:
-                            link = match.group(1)
-                            break
-
-                    tender['link'] = link
-                    if tender['objet'] != 'N/A' or tender['date_limite'] != 'N/A':
-                        tenders.append(tender)
-
                 print(f"Extraction terminée. {len(tenders)} appels d'offres extraits.")
-
-
-                
-
-
-
-
-
 
                 # Exporter les données
                 if tenders:

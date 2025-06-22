@@ -1,78 +1,102 @@
 [
   {
-    "objet": "Travaux extension des locaux DT",
-    "date_limite": "17/06/2025 02:30"
-  },
-  {
-    "objet": "Expertise et conseil immobilier pour le développement du nouveau siège Casa-Anfa du Groupe Royal Air Maroc",
-    "date_limite": "17/06/2025 02:30"
-  },
-  {
-    "objet": "Assistance maîtrise d’ouvrage déléguée fonctionnelle, technique, administrative & économique",
-    "date_limite": "17/06/2025 02:30"
-  },
-  {
     "objet": "AO short Term Lease of 01 CF34-10E6G07 engine",
-    "date_limite": "20/06/2025 20:30"
+    "date_limite": "23/06/2025 20:30",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
+  },
+  {
+    "objet": "Ferme photovoltaïque terminal Fret CMN",
+    "date_limite": "23/06/2025 20:30",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
+  },
+  {
+    "objet": "Landing Gear Overhaul/Exchange for Boeing 747-400 (CN-RGA)",
+    "date_limite": "24/06/2025 07:29",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
   },
   {
     "objet": "AO confection housses sièges B787",
-    "date_limite": "20/06/2025 20:30"
+    "date_limite": "24/06/2025 08:29",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
   },
   {
-    "objet": "Assistance comptable",
-    "date_limite": "23/06/2025 20:30"
-  },
-  {
-    "objet": "Remplacement Firewalls en fin de vie et gestion du spare",
-    "date_limite": "25/06/2025 20:30"
+    "objet": "AO confection housses sièges B737NG",
+    "date_limite": "25/06/2025 08:29",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
   },
   {
     "objet": "Entretien des espaces verts",
-    "date_limite": "26/06/2025 02:30"
+    "date_limite": "26/06/2025 02:30",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
   },
   {
     "objet": "AO achat lot d'outillage avions",
-    "date_limite": "26/06/2025 08:29"
+    "date_limite": "26/06/2025 08:29",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
+  },
+  {
+    "objet": "LM ZRH",
+    "date_limite": "27/06/2025 02:30",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
+  },
+  {
+    "objet": "LM MUC",
+    "date_limite": "27/06/2025 02:30",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
   },
   {
     "objet": "Landing Gear Overhaul/Exchange for B737NG fleet",
-    "date_limite": "27/06/2025 07:29"
+    "date_limite": "27/06/2025 07:29",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
+  },
+  {
+    "objet": "Maintenance de la pesée d'avion",
+    "date_limite": "27/06/2025 08:29",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
   },
   {
     "objet": "AO -Réparation APU 331-200 (B767)",
-    "date_limite": "27/06/2025 20:30"
+    "date_limite": "27/06/2025 20:30",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
   },
   {
     "objet": "RFQ catering à ABV",
-    "date_limite": "28/06/2025 02:30"
+    "date_limite": "28/06/2025 02:30",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
   },
   {
     "objet": "RFQ Catering à LOS",
-    "date_limite": "28/06/2025 02:30"
+    "date_limite": "28/06/2025 02:30",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
+  },
+  {
+    "objet": "Assistance comptable",
+    "date_limite": "30/06/2025 20:30",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
+  },
+  {
+    "objet": "Expertise et conseil immobilier pour le développement du nouveau siège Casa-Anfa du Groupe Royal Air Maroc",
+    "date_limite": "01/07/2025 02:30",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
+  },
+  {
+    "objet": "Assistance maîtrise d’ouvrage déléguée fonctionnelle, technique, administrative & économique",
+    "date_limite": "01/07/2025 02:30",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
   },
   {
     "objet": "Lot 3: Gestion des campagnes Social Ads",
-    "date_limite": "04/07/2025 02:30"
+    "date_limite": "04/07/2025 02:30",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
   },
   {
     "objet": "Lot 2: Gestion des campagnes SEM & Display",
-    "date_limite": "04/07/2025 02:30"
+    "date_limite": "04/07/2025 02:30",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
   },
   {
     "objet": "Lot 1: Gestion des campagnes SEO sur les moteurs de recherche",
-    "date_limite": "04/07/2025 02:30"
-  },
-  {
-    "objet": "AO catering aux aéroports l’acquisition des théières argentées et plateaux argentés",
-    "date_limite": "09/07/2025 08:29"
-  },
-  {
-    "objet": "BIDT & ABUSE SOLUTION",
-    "date_limite": "09/07/2025 20:30"
-  },
-  {
-    "objet": "Achat des uniformes RAM",
-    "date_limite": "01/08/2025 02:30"
+    "date_limite": "04/07/2025 02:30",
+    "link": "https://ram-esourcing.royalairmaroc.com/esop/toolkit/negotiation/rfq/DetailRfq.do"
   }
 ]

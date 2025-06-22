@@ -3,71 +3,153 @@
 {% block title %}Détails de l'appel d'offres{% endblock %}
 
 {% block content %}
-<div class="card">
-    <div class="card-header">
-        <h1 class="h3 mb-0">Détails de l'appel d'offres</h1>
+<div class="fade-in">
+    <div class="flex items-center mb-8 slide-in-left">
+        <a href="{% url 'tender-list' %}" 
+            class="mr-4 px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transform hover:scale-105 transition-all duration-300 flex items-center shadow-md hover:shadow-lg">
+            <i class="fas fa-arrow-left mr-2"></i> Retour à la liste
+        </a>
+        <h1 class="text-3xl font-bold text-gray-800 dark:text-white">Détails de l'appel d'offres</h1>
     </div>
-    <div class="card-body">
-        <div class="row mb-3">
-            <div class="col-md-3">
-                <strong>Site :</strong>
-            </div>
-            <div class="col-md-9">
-                {{ tender.site }}
-            </div>
-        </div>
 
-        <div class="row mb-3">
-            <div class="col-md-3">
-                <strong>Objet :</strong>
-            </div>
-            <div class="col-md-9">
-                {{ tender.objet }}
-            </div>
-        </div>
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border-2 border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 slide-in-right">
+        <div class="p-8">
+            <table class="w-full border-collapse">
+                <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                    <!-- Site -->
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-200">
+                        <td class="py-6 pr-6 w-1/4">
+                            <div class="flex items-center space-x-3">
+                                <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/50">
+                                    <i class="fas fa-building text-primary text-xl"></i>
+                                </div>
+                                <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Site</h2>
+                            </div>
+                        </td>
+                        <td class="py-6 pl-6 text-gray-600 dark:text-gray-300 text-lg">
+                            {{ tender.site }}
+                        </td>
+                    </tr>
 
-        <div class="row mb-3">
-            <div class="col-md-3">
-                <strong>Date limite :</strong>
-            </div>
-            <div class="col-md-9">
-                {{ tender.date_limite|date:"d/m/Y" }}
-            </div>
-        </div>
+                    <!-- Objet -->
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-200">
+                        <td class="py-6 pr-6 w-1/4">
+                            <div class="flex items-center space-x-3">
+                                <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/50">
+                                    <i class="fas fa-file-alt text-purple-500 text-xl"></i>
+                                </div>
+                                <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Objet</h2>
+                            </div>
+                        </td>
+                        <td class="py-6 pl-6 text-gray-600 dark:text-gray-300 text-lg">
+                            {{ tender.objet }}
+                        </td>
+                    </tr>
 
-        <div class="row mb-3">
-            <div class="col-md-3">
-                <strong>Créé le :</strong>
-            </div>
-            <div class="col-md-9">
-                {{ tender.created_at|date:"d/m/Y H:i" }}
-            </div>
-        </div>
+                    <!-- Date limite -->
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-200">
+                        <td class="py-6 pr-6 w-1/4">
+                            <div class="flex items-center space-x-3">
+                                <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50">
+                                    <i class="fas fa-calendar text-green-500 text-xl"></i>
+                                </div>
+                                <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Date limite</h2>
+                            </div>
+                        </td>
+                        <td class="py-6 pl-6 text-gray-600 dark:text-gray-300 text-lg">
+                            {{ tender.date_limite|date:"d/m/Y" }}
+                        </td>
+                    </tr>
 
-        <div class="row mb-3">
-            <div class="col-md-3">
-                <strong>Mis à jour le :</strong>
-            </div>
-            <div class="col-md-9">
-                {{ tender.updated_at|date:"d/m/Y H:i" }}
-            </div>
-        </div>
+                    <!-- Créé le -->
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-200">
+                        <td class="py-6 pr-6 w-1/4">
+                            <div class="flex items-center space-x-3">
+                                <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-yellow-100 dark:bg-yellow-900/50">
+                                    <i class="fas fa-clock text-yellow-500 text-xl"></i>
+                                </div>
+                                <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Créé le</h2>
+                            </div>
+                        </td>
+                        <td class="py-6 pl-6 text-gray-600 dark:text-gray-300 text-lg">
+                            {{ tender.created_at|date:"d/m/Y H:i" }}
+                        </td>
+                    </tr>
 
-        <div class="row mb-3">
-            <div class="col-md-3">
-                <strong>Lien :</strong>
-            </div>
-            <div class="col-md-9">
-                {% if tender.link and tender.link != 'N/A' %}
-                    <a href="{{ tender.link }}" target="_blank" class="btn btn-primary">Voir l'appel d'offres</a>
-                {% else %}
-                    <span class="text-muted">Aucun lien disponible</span>
-                {% endif %}
-            </div>
+                    <!-- Mis à jour le -->
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-200">
+                        <td class="py-6 pr-6 w-1/4">
+                            <div class="flex items-center space-x-3">
+                                <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-red-100 dark:bg-red-900/50">
+                                    <i class="fas fa-history text-red-500 text-xl"></i>
+                                </div>
+                                <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Mis à jour le</h2>
+                            </div>
+                        </td>
+                        <td class="py-6 pl-6 text-gray-600 dark:text-gray-300 text-lg">
+                            {{ tender.updated_at|date:"d/m/Y H:i" }}
+                        </td>
+                    </tr>
+
+                    <!-- Lien -->
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-200">
+                        <td class="py-6 pr-6 w-1/4">
+                            <div class="flex items-center space-x-3">
+                                <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-orange-100 dark:bg-orange-900/50">
+                                    <i class="fas fa-link text-orange-500 text-xl"></i>
+                                </div>
+                                <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Lien</h2>
+                            </div>
+                        </td>
+                        <td class="py-6 pl-6">
+                            {% if tender.link and tender.link != 'N/A' %}
+                                <a href="{{ tender.link }}" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg text-lg">
+                                    <i class="fas fa-external-link-alt mr-3"></i>
+                                    Voir l'appel d'offres
+                                </a>
+                            {% else %}
+                                <span class="text-gray-500 dark:text-gray-400 text-lg italic">Aucun lien disponible</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </div>
-    <div class="card-footer">
-        <a href="{% url 'tender-list' %}" class="btn btn-secondary">Retour à la liste</a>
     </div>
 </div>
+
+<style>
+    .slide-in-left {
+        animation: slideInLeft 0.5s ease-out;
+    }
+
+    .slide-in-right {
+        animation: slideInRight 0.5s ease-out;
+    }
+
+    @keyframes slideInLeft {
+        from {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+</style>
 {% endblock %}

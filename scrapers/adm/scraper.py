@@ -70,33 +70,31 @@ class AdmScraper:
                 seen_objects = set()  # Pour suivre les objets déjà vus
                 tender_items = page.query_selector_all('div.contentColumn')
                 
-                for item in tender_items:
+                # Scraper les liens pour les indices 2 à 7
+                for index in range(2, 8):  # Modifié pour inclure jusqu'à l'index 7
                     try:
+                        # Sélectionner l'élément de l'appel d'offres
+                        item = page.query_selector(f'#tabNav > div.p-2 > div.content > div:nth-child({index})')
+                        if not item:
+                            print(f"Élément {index} non trouvé, passage au suivant")
+                            continue
+
                         objet = item.query_selector('div.info.p-card div.p-objet')
                         date_limite = item.query_selector('div.leftColumn div.limita')
-                        link_element = item.query_selector('div.info.p-card div.p-objet')
                         
-                        # Extraire le lien depuis l'attribut onclick
+                        # Extraire le lien avec le sélecteur incrémenté
                         link = 'N/A'
-                        link_element = page.query_selector('#tabNav > div.p-2 > div.content > div:nth-child(2)')
+                        onclick = item.get_attribute('onclick')
+                        print(f"DEBUG onclick pour l'élément {index}:", onclick)  # 🔍 à supprimer plus tard
 
-                        if link_element:
-                            onclick = link_element.get_attribute('onclick')
-                            print("DEBUG onclick:", onclick)  # 🔍 à supprimer plus tard
-
-                            if onclick:
-                                match = re.search(r"location\.href\s*=\s*['\"]([^'\"]+)['\"]", onclick)
-                                if match:
-                                    link = match.group(1)
-
+                        if onclick:
+                            match = re.search(r"location\.href\s*=\s*['\"]([^'\"]+)['\"]", onclick)
+                            if match:
+                                link = match.group(1)
 
                         # Nettoyer et formater les données
                         objet_text = objet.text_content().strip() if objet else 'N/A'
                         
-
-
-
-
                         # Extraire la date limite
                         date_text = 'N/A'
                         if date_limite:
@@ -126,7 +124,7 @@ class AdmScraper:
                             }
                             tenders.append(tender)
                     except Exception as e:
-                        print(f"Erreur lors de l'extraction d'un appel d'offres : {str(e)}")
+                        print(f"Erreur lors de l'extraction de l'appel d'offres {index} : {str(e)}")
                         continue
                 
                 # Exporter les données
